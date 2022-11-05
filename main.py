@@ -7,9 +7,14 @@ intents.members = True
 client = commands.Bot(command_prefix= "> ", intents= intents)
 
 # .........................[on-ready-code]......................
-@client.event
-async def on_ready():
-    print(f'We have logged in as {client.user}')
+@client.Cog.listener()
+async def on_ready(self):
+    print("i am alive")
+    statuses = ["Version:1.0.2","","Contributors: Akhil B Xavier (winter_x64), Theertha Alphonsa V S","Saturday HackNight"]
+    while True:
+        status = random.choice(statuses)
+        await self.client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=status))
+        await asyncio.sleep(10)
 
 # .........................[main-code]..........................
 @client.command()
